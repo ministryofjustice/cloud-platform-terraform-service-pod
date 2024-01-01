@@ -1,4 +1,4 @@
-FROM alpine:3.18.4
+FROM alpine:3.19.0
 
 RUN adduser -D nonroot -u 1001 -h /home/nonroot
 RUN apk add --no-cache aws-cli
