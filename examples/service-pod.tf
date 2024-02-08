@@ -1,5 +1,6 @@
 module "service_pod" {
-  source = "../"
+  source = "../" # use the latest release
+  # source = "https://github.com/ministryofjustice/cloud-platform-terraform-service-pod?ref=version" # use the latest release
 
   # Configuration
   namespace            = var.namespace
