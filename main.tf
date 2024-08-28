@@ -63,4 +63,10 @@ resource "kubernetes_deployment" "service_pod" {
       }
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      spec.0.replicas
+    ]
+  }
 }
