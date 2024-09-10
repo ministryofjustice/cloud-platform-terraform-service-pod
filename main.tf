@@ -22,7 +22,7 @@ data "aws_ecr_repository" "service_pod" {
 ################################
 resource "kubernetes_deployment" "service_pod" {
   metadata {
-    name      = "${local.identifier}-${var.service_account_name}-service-pod"
+    name      = ${var.service_account_name} == "" ? "${local.identifier}-service-pod" : "${var.service_account_name}-service-pod"
     namespace = var.namespace
 
     labels = {
