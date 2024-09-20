@@ -1,8 +1,7 @@
-FROM alpine:3.20.3
+FROM debian:bookworm-slim
 
-RUN adduser -D nonroot -u 1001 -h /home/nonroot
-RUN apk add --no-cache aws-cli
-RUN apk add --no-cache curl
+RUN useradd -m -u 1001 -d /home/nonroot nonroot
+RUN apt-get update && apt-get install -y awscli curl && rm -rf /var/lib/apt/lists/*
 
 USER 1001
 WORKDIR /home/nonroot
