@@ -49,7 +49,7 @@ resource "kubernetes_deployment" "service_pod" {
       spec {
         service_account_name = var.service_account_name
         container {
-          image = "${data.aws_ecr_repository.service_pod.repository_url}:c5f69b4624b956248001fa7c173c89a0556a457e" # update this hash on a new Dockerfile release
+          image = "${data.aws_ecr_repository.service_pod.repository_url}:3a155572f081730ef3a54f971bcfe3343dd9011b" # update this hash on a new Dockerfile release
           name  = "service-pod"
           stdin = true
           tty   = true
