@@ -42,7 +42,7 @@ resource "kubernetes_deployment" "service_pod" {
     template {
       metadata {
         labels = {
-    name      = ${var.service_account_name} == "" ? "${local.identifier}-service-pod" : "${var.service_account_name}-service-pod"
+    name      = var.service_account_name == "" ? "${local.identifier}-service-pod" : "${var.service_account_name}-service-pod"
         }
       }
 
