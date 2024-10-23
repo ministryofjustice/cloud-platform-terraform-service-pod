@@ -1,6 +1,6 @@
 locals {
   # Generic configuration
-  identifier = "cloud-platform-${random_id.name.hex}"
+  identifier = "cp-${random_id.name.hex}"
 }
 
 ########################
@@ -22,7 +22,7 @@ data "aws_ecr_repository" "service_pod" {
 ################################
 resource "kubernetes_deployment" "service_pod" {
   metadata {
-    name      = "${local.identifier}-service-pod"
+    name      = var.service_account_name == "" ? "${local.identifier}-service-pod" : "${var.service_account_name}-service-pod"
     namespace = var.namespace
 
     labels = {
@@ -35,14 +35,14 @@ resource "kubernetes_deployment" "service_pod" {
 
     selector {
       match_labels = {
-        app = "${local.identifier}-service-pod"
+    name      = var.service_account_name == "" ? "${local.identifier}-service-pod" : "${var.service_account_name}-service-pod"
       }
     }
 
     template {
       metadata {
         labels = {
-          app = "${local.identifier}-service-pod"
+    name      = var.service_account_name == "" ? "${local.identifier}-service-pod" : "${var.service_account_name}-service-pod"
         }
       }
 
