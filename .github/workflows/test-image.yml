@@ -1,3 +1,5 @@
+name: Test image
+
 on:
   pull_request:
     paths:
@@ -7,6 +9,9 @@ on:
 jobs:
   test_image:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
