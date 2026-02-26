@@ -53,6 +53,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace name to create the pod | `string` | n/a | yes |
+| <a name="input_override_deployment_name"></a> [override\_deployment\_name](#input\_override\_deployment\_name) | Optional custom name for the deployment (if not specified, will be auto-generated). Must be 63 characters or less. | `string` | `""` | no |
 | <a name="input_service_account_name"></a> [service\_account\_name](#input\_service\_account\_name) | Name of the service account to attach to the pod | `string` | n/a | yes |
 | <a name="input_service_pod_count"></a> [service\_pod\_count](#input\_service\_pod\_count) | Amount of service pods to create (default: 1) | `number` | `1` | no |
 
