@@ -16,3 +16,9 @@ variable "service_pod_count" {
   default     = 1
   type        = number
 }
+
+variable "override_deployment_name" {
+  description = "Optional custom name for the deployment (if not specified, will be auto-generated). Must be 63 characters or less."
+  type        = string
+  default     = ""
+}
