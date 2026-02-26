@@ -22,7 +22,9 @@ data "aws_ecr_repository" "service_pod" {
 ################################
 resource "kubernetes_deployment" "service_pod" {
   metadata {
-    name      = var.service_account_name == "" ? "${local.identifier}-service-pod" : "${var.service_account_name}-service-pod"
+    # Name priority: 1) override_deployment_name if specified, 2) service_account_name-service-pod, 3) auto-generated identifier-service-pod
+    # Use override_deployment_name to avoid Kubernetes 63-character label limit (e.g., for long namespace/app names)
+    name      = var.override_deployment_name != "" ? var.override_deployment_name : (var.service_account_name == "" ? "${local.identifier}-service-pod" : "${var.service_account_name}-service-pod")
     namespace = var.namespace
 
     labels = {
@@ -35,14 +37,14 @@ resource "kubernetes_deployment" "service_pod" {
 
     selector {
       match_labels = {
-    name      = var.service_account_name == "" ? "${local.identifier}-service-pod" : "${var.service_account_name}-service-pod"
+    name      = var.override_deployment_name != "" ? var.override_deployment_name : (var.service_account_name == "" ? "${local.identifier}-service-pod" : "${var.service_account_name}-service-pod")
       }
     }
 
     template {
       metadata {
         labels = {
-    name      = var.service_account_name == "" ? "${local.identifier}-service-pod" : "${var.service_account_name}-service-pod"
+    name      = var.override_deployment_name != "" ? var.override_deployment_name : (var.service_account_name == "" ? "${local.identifier}-service-pod" : "${var.service_account_name}-service-pod")
         }
       }
 
