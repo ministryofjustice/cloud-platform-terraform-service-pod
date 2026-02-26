@@ -21,4 +21,9 @@ variable "override_deployment_name" {
   description = "Optional custom name for the deployment (if not specified, will be auto-generated). Must be 63 characters or less."
   type        = string
   default     = ""
+
+  validation {
+    condition     = length(var.override_deployment_name) <= 63
+    error_message = "Optional variable override_deployment_name must be 63 characters or less if provided."
+  }
 }
