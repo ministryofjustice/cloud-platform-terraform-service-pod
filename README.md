@@ -2,7 +2,14 @@
 
 [![Releases](https://img.shields.io/github/release/ministryofjustice/cloud-platform-terraform-service-pod/all.svg?style=flat-square)](https://github.com/ministryofjustice/cloud-platform-terraform-service-pod/releases)
 
-This Terraform module will create a pod in a namespace that runs the `cloud-platform-service-pod` Docker image, which includes the AWS CLI v2.
+This Terraform module will create a pod in a namespace that runs the `cloud-platform-service-pod` Docker image, which includes the AWS CLI v2:
+
+## Versions
+
+| Component | Version |
+|------|---------|
+| OS | Debian v13 (trixie) |
+| AWS CLI | 2.23.6 |
 
 ## Usage
 
